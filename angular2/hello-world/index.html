@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<script src="lib/traceur-runtime.js"></script>
+		<script src="lib/system.js"></script>
+		<script src="lib/angular2.dev.js"></script>
+
+		<title>Angular 2 Hello World</title>
+	</head>
+
+	<body>
+		<h1>Angular 2 Hello World</h1>
+
+		<section>
+			<hello-world>
+				Loading...
+			</hello-world>
+		</section>
+
+		<script src="config.js"></script>
+		<script>
+			System.import('main.ts')
+					.catch(function(err) { console.error('Loading failed', err);});
+		</script>
+	</body>
+
+</html>
+
