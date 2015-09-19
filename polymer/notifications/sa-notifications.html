@@ -1,0 +1,49 @@
+<dom-module id="sa-notifications">
+
+	<link rel="import" type="css" href="sa-notifications.css">
+
+	<template>
+		<template is="dom-if" if="{{visible}}">
+			<div class="sa-notifications-notification" style$="{{computedStyle(opacity)}}">{{message}}</div>
+		</template>
+	</template>
+
+	<script>
+		Polymer({
+			is: 'sa-notifications',
+
+			ready: function () {
+				this.reset();
+			},
+
+			notify: function (message) {
+				this.reset();
+				this.visible = true;
+				this.message = message;
+				this.fadeTimer = setInterval(this.fade.bind(this), 100);
+			},
+
+			fade: function () {
+				this.opacity -= 0.1;
+				if (this.opacity <= 0) {
+					this.reset();
+				}
+			},
+
+			reset: function () {
+				this.visible = false;
+				this.message = '';
+				this.opacity = 1.0;
+				if (this.fadeTimer) {
+					clearInterval(this.fadeTimer);
+					this.fadeTimer = null;
+				}
+			},
+
+			computedStyle: function (opacity) {
+				return 'opacity:' + opacity;
+			}
+		});
+	</script>
+
+</dom-module>

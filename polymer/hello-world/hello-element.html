@@ -1,0 +1,18 @@
+<dom-module id="hello-element">
+
+	<template>
+		<h1>
+			Hello, <span>{{name}}</span>!
+		</h1>
+	</template>
+
+	<script>
+		Polymer({
+			is: 'hello-element',
+			ready: function () {
+				this.name = 'Software Architect';
+			}
+		});
+	</script>
+
+</dom-module>

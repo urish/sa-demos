@@ -1,0 +1,25 @@
+<dom-module id="notifications-app">
+
+	<link rel="import" href="sa-notifications.html" />
+
+	<template>
+		Notification text: <input type="text" value="{{text::input}}" />
+		<button on-click="showNotification">Show Notification</button>
+
+		<sa-notifications id="notifier"></sa-notifications>
+	</template>
+
+	<script>
+		Polymer({
+			is: 'notifications-app',
+
+			ready: function() {
+				this.text = 'You are awesome :)';
+			},
+
+			showNotification: function() {
+				this.$.notifier.notify(this.text);
+			}
+		});
+	</script>
+</dom-module>
