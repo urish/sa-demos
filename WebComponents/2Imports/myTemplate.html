@@ -1,0 +1,22 @@
+<template id="myTemplate">
+    <style>
+        #notificationDiv {
+            border: solid 1px lightgray;
+            background-color: aliceblue;
+            position: absolute;
+            right: 0;
+            width: 200px;
+            margin-right: 10px;
+            text-align: center;
+            font-family: 'Tahoma';
+            font-size: 12px;
+        }
+    </style>
+    <div id="notificationDiv"></div>
+    <script>
+        (function() {
+            var elm = document.getElementById('notificationDiv');
+            elm.innerText = 'Notification';
+        }());
+    </script>
+</template>

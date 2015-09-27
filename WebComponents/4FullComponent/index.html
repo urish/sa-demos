@@ -1,0 +1,16 @@
+<html>
+<head>
+    <title>Custom Components</title>
+    <link rel="import" href="tmpl.html">
+</head>
+<body>
+    <div id="shell">
+        <notification-element></notification-element>
+    </div>
+    <script src="../bower_components/webcomponents.js/webcomponents.min.js"></script>
+    <script>
+        var elm = document.querySelector('notification-element');
+        elm.show('hello');
+    </script>
+</body>
+</html>

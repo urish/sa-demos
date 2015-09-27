@@ -1,0 +1,20 @@
+{
+  "name": "Web Components",
+  "version": "0.0.1",
+  "authors": [
+    "Gil Fink"
+  ],
+  "description": "Web Components Demo",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "webcomponents.js": "~0.5.4"
+  }
+}

@@ -1,0 +1,54 @@
+<template id="notificationTmpl">
+    <style>
+        #notificationDiv {
+            border: solid 1px lightgray;
+            background-color: aliceblue;
+            position: absolute;
+            right: 0;
+            width: 200px;
+            margin-right: 10px;
+            text-align: center;
+            font-family: 'Tahoma';
+            font-size: 12px;
+        }
+    </style>
+    <div id="notificationDiv"></div>
+</template>
+<script>
+    var thisDoc = document.currentScript.ownerDocument,
+        notificationTmpl = thisDoc.querySelector('#notificationTmpl'),
+        notificationPrototype = Object.create(HTMLElement.prototype),
+        root;
+
+    // Setup our Shadow DOM and clone the template
+    notificationPrototype.createdCallback = function () {
+        root = this.createShadowRoot();
+        root.appendChild(document.importNode(notificationTmpl.content, true));
+        this.style.display = 'none';
+    };
+
+    notificationPrototype.show = function(notify) {
+        var notification = root.querySelector("#notificationDiv");
+        notification.innerText = notify;
+        this.style.display = 'block';
+        fade(this);
+    };
+
+    function fade(element) {
+        var op = 1;  // initial opacity
+        var timer = setInterval(function () {
+            if (op <= 0.1){
+                clearInterval(timer);
+                element.style.display = 'none';
+            }
+            element.style.opacity = op;
+            element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+            op -= op * 0.1;
+        }, 100);
+    }
+
+    // Register our new element
+    var notification = document.registerElement('notification-element', {
+        prototype: notificationPrototype
+    });
+</script>
